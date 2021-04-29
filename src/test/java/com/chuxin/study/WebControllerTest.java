@@ -1,6 +1,7 @@
 package com.chuxin.study;
 
 import com.chuxin.study.model.StudyApplication;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = StudyApplication.class)
+@Slf4j
 public  abstract class WebControllerTest {
 
     @Autowired
@@ -31,10 +33,10 @@ public  abstract class WebControllerTest {
     }
 
     public void buildGetRequest(String url, String params) throws Exception {
-        System.out.println("请求参数体为:" + params);
+        log.info("请求参数体为:" + params);
         MvcResult body = mockMvc.perform(MockMvcRequestBuilders.get(url).param("body", params))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
-        System.out.println("响应返回体为:"+ body.getResponse().getContentAsString());
+        log.info("响应返回体为:"+ body.getResponse().getContentAsString());
 
     }
 }
