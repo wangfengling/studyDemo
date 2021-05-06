@@ -3,8 +3,11 @@ server:
 logging:
   config: classpath:log4j2.xml
 spring:
-  profiles:
-    active: dev
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    data: classpath*:schema/data/*.sql
+    schema: classpath*:schema/sql/*.sql
 
 mybatis:
   config-location: classpath:mybatis-config.xml

@@ -10,7 +10,7 @@ public class TestControllerTest extends WebControllerTest {
     @ParameterizedTest
     @ParamsFromFile(fileName = {"test.json", "test1.json"})
     public void buildPrintHello(String params) throws Exception {
-        buildGetRequest("/printHello", params);
+        buildGetRequest("/printHello/dog", params);
     }
 
 }
